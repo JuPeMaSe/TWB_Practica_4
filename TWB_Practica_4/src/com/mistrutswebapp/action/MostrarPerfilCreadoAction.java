@@ -66,6 +66,8 @@ public class MostrarPerfilCreadoAction extends Action {
 			ArrayList<Perfil> listaPerfiles = new ArrayList<Perfil>();;
 			listaPerfiles = (ArrayList<Perfil>)ModelFacade.getPerfiles("WHERE user_ID = '"+perfilBean.getUser_ID() + "'");
 			sesion.setAttribute("listaPerfiles", listaPerfiles);
+			
+			sesion.removeAttribute("perfilBean");
 		
 		return mapping.findForward("succes");
 	}

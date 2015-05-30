@@ -42,6 +42,8 @@ public class CrearAction extends Action {
 
 		//System.out.println("Tamaño lista --> "+perfilBean.getListaTit().size());
 		String accion = perfilBean.getAccion();
+		System.out.println("CrearAction. accion --> "+ accion);
+		//return mapping.findForward("succes");
 		if(accion.substring(0,13).equals("Eliminar Titu")){
 			int intClave = Integer.parseInt(accion.substring(20));
 			ArrayList<Integer>listaProv = new ArrayList<Integer>();
@@ -275,56 +277,130 @@ public class CrearAction extends Action {
 //			//sesion.setAttribute("titulacionBean", titulacionBean);
 //			sesion.setAttribute("perfilBean", perfilBean);
 		 
-		//Me guarda el archivo en la dirección que el servlet tiene definida en su contexto
-		 FileOutputStream outputStream = null;
-		 FormFile formFileFoto = null;
-		 FormFile formFilePdf = null;
-		 String path="";
-		 formFileFoto = perfilBean.getFotografia_file();
-		 formFilePdf = perfilBean.getPdf_file();
-		 if(formFileFoto != null && !formFileFoto.getFileName().equals("")) {  
-			  try { 
-			     path = getRepositoryPath() +  formFileFoto.getFileName();
-				  System.out.println("File will be uploaded to this path: " + path);
-				  perfilBean.setFotografia(formFileFoto.getFileName());
-			     outputStream = new FileOutputStream(new File(path));
-			     outputStream.write(formFileFoto.getFileData());
-			  
-			  } catch(Exception exception) {
-			   System.out.println(exception);
-			  }finally {
-			      if (outputStream != null) {
-			          try {
-						outputStream.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			      }
-			  }
-			  System.out.println("The file " + formFileFoto.getFileName() + " was uploaded successfully.");
+		
+		if(accion.substring(0,13).equals("Eliminar Foto")){			
+			perfilBean.setFotografia("");
+			 return mapping.findForward("refresh");
 		 }
-		 if(formFilePdf != null && !formFilePdf.getFileName().equals("")) {  
-			  try { 
-			     path = getRepositoryPath() +  formFilePdf.getFileName();
-				  System.out.println("File will be uploaded to this path: " + path);
-				  perfilBean.setPdf(formFilePdf.getFileName());
-			     outputStream = new FileOutputStream(new File(path));
-			     outputStream.write(formFilePdf.getFileData());
-			  
-			  } catch(Exception exception) {
-			   System.out.println(exception);
-			  }finally {
-			      if (outputStream != null) {
-			          try {
-						outputStream.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-			      }
-			  }
-			  System.out.println("The file " + formFilePdf.getFileName() + " was uploaded successfully.");
+		
+		
+		if(accion.substring(0,13).equals("Nueva Fotogra")){
+			//Me guarda el archivo en la dirección que el servlet tiene definida en su contexto
+			 FileOutputStream outputStream = null;
+			 FormFile formFileFoto = null;
+			 String path="";
+			 formFileFoto = perfilBean.getFotografia_file();
+			 if(formFileFoto != null && !formFileFoto.getFileName().equals("")) {  
+				  try { 
+				     path = getRepositoryPath() +  formFileFoto.getFileName();
+					  System.out.println("File will be uploaded to this path: " + path);
+					  perfilBean.setFotografia(formFileFoto.getFileName());
+				     outputStream = new FileOutputStream(new File(path));
+				     outputStream.write(formFileFoto.getFileData());				  
+				  } catch(Exception exception) {
+				   System.out.println(exception);
+				  }finally {
+				      if (outputStream != null) {
+				          try {
+							outputStream.close();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				      }
+				  }
+				  System.out.println("The file " + formFileFoto.getFileName() + " was uploaded successfully.");
+			 }
+			 return mapping.findForward("refresh");
+		}
+		
+		
+
+		if(accion.substring(0,13).equals("Eliminar Arch")){			
+			perfilBean.setPdf("");
+			 return mapping.findForward("refresh");
 		 }
+		
+		if(accion.substring(0,13).equals("Nuevo Archivo")){
+			 FileOutputStream outputStream = null;
+			 FormFile formFilePdf = null;
+			 String path="";
+			 formFilePdf = perfilBean.getPdf_file();
+			 if(formFilePdf != null && !formFilePdf.getFileName().equals("")) {  
+				  try { 
+				     path = getRepositoryPath() +  formFilePdf.getFileName();
+					  System.out.println("File will be uploaded to this path: " + path);
+					  perfilBean.setPdf(formFilePdf.getFileName());
+				     outputStream = new FileOutputStream(new File(path));
+				     outputStream.write(formFilePdf.getFileData());
+				  
+				  } catch(Exception exception) {
+				   System.out.println(exception);
+				  }finally {
+				      if (outputStream != null) {
+				          try {
+							outputStream.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				      }
+				  }
+				  System.out.println("The file " + formFilePdf.getFileName() + " was uploaded successfully.");
+			 }	
+			 return mapping.findForward("refresh");
+		}
+		
+		
+//		//Me guarda el archivo en la dirección que el servlet tiene definida en su contexto
+//		 FileOutputStream outputStream = null;
+//		 FormFile formFileFoto = null;
+//		 FormFile formFilePdf = null;
+//		 String path="";
+//		 formFileFoto = perfilBean.getFotografia_file();
+//		 formFilePdf = perfilBean.getPdf_file();
+//		 if(formFileFoto != null && !formFileFoto.getFileName().equals("")) {  
+//			  try { 
+//			     path = getRepositoryPath() +  formFileFoto.getFileName();
+//				  System.out.println("File will be uploaded to this path: " + path);
+//				  perfilBean.setFotografia(formFileFoto.getFileName());
+//			     outputStream = new FileOutputStream(new File(path));
+//			     outputStream.write(formFileFoto.getFileData());
+//			  
+//			  } catch(Exception exception) {
+//			   System.out.println(exception);
+//			  }finally {
+//			      if (outputStream != null) {
+//			          try {
+//						outputStream.close();
+//					} catch (IOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//			      }
+//			  }
+//			  System.out.println("The file " + formFileFoto.getFileName() + " was uploaded successfully.");
+//		 }
+//		 if(formFilePdf != null && !formFilePdf.getFileName().equals("")) {  
+//			  try { 
+//			     path = getRepositoryPath() +  formFilePdf.getFileName();
+//				  System.out.println("File will be uploaded to this path: " + path);
+//				  perfilBean.setPdf(formFilePdf.getFileName());
+//			     outputStream = new FileOutputStream(new File(path));
+//			     outputStream.write(formFilePdf.getFileData());
+//			  
+//			  } catch(Exception exception) {
+//			   System.out.println(exception);
+//			  }finally {
+//			      if (outputStream != null) {
+//			          try {
+//						outputStream.close();
+//					} catch (IOException e) {
+//						e.printStackTrace();
+//					}
+//			      }
+//			  }
+//			  System.out.println("The file " + formFilePdf.getFileName() + " was uploaded successfully.");
+//		 }
 		 perfilBean.setUser_ID(loginBean.getUser_ID());
 		 sesion.setAttribute("perfilBean", perfilBean);
 		return mapping.findForward("succes");

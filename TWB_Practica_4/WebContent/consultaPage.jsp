@@ -92,7 +92,7 @@
 		
 		<html:link action="home"><bean:message key="tohome.link" /></html:link>
 	</div>
-	<fieldset>
+	<fieldset style="background-color:#FFFFC7">
 		Para hacer una consulta:
 		<ol>
 			<li>Marque la casilla de chequeo y elija el valor que desea</li>

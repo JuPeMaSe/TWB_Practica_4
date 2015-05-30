@@ -160,8 +160,8 @@
  			name="modificarBean"
  			scope="request"
  			input="/modificarPage.jsp"> 	
- 			<forward name="success" path= "/mostrarPerfilModificar.jsp"/>
- 			 <!-- <forward name="success" path= "/crearPage.jsp"/>    -->
+ 			<!-- <forward name="success" path= "/mostrarPerfilModificar.jsp"/>  -->
+ 			<forward name="success" path= "/crearPage.jsp"/>    
 			<forward name="exit" path= "/homePage.jsp"/>  		
  		</action>
  		<action path="/processPerfilModificado"

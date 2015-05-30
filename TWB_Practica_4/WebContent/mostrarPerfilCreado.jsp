@@ -22,42 +22,42 @@
 	<jsp:useBean id= "experienciaBean" class="com.mistrutswebapp.beans.ExperienciaBean" scope="session"/>
 	-->
 	
-	<title>Crear perfil</title>
+	<title>Editar perfil</title>
 </head>
 <body>
  	<jsp:directive.include file="header.jsp" /> 
  	 
  	<div id="content">
    		
-	<h1>Formulario de registro</h1>
+	<h1>Confirmación de los datos del Perfil</h1>
 	<html:form action="/processGrabar" enctype="multipartform-data">
 	<fieldset>
 	  <table border="0">
 					<tr>
-						<td>Dirección</td>
+						<th>Dirección</th>
 						<td><jsp:getProperty name="perfilBean" property="direccion"/></td>
 					</tr>
 					<tr>
-						<td>Provincia</td>
+						<th>Provincia</th>
 						<td><jsp:getProperty name="perfilBean" property="provincia"/></td>
 					</tr>
 					<tr>
-						<td>Pais</td>
+						<th>Pais</th>
 						<td><jsp:getProperty name="perfilBean" property="pais"/></td>
 					</tr>
 					<tr>
-						<td>Pdf</td>
+						<th>Pdf</th>
 						<td><jsp:getProperty name="perfilBean" property="pdf"/></td>
 					</tr>
 					<tr>
-						<td>Fotografía</td>
+						<th>Fotografía</th>
 						<td><jsp:getProperty name="perfilBean" property="fotografia"/></td>
 					</tr>
 					<!--<jsp:setProperty name="perfilBean" property="titulacion_var" param="titulacion_var" />--> 
 					<c:forEach var="titu" items="${perfilBean.listaTit}">
 						<c:forEach var="titula" items="${listaTitulaciones}">
 	 						<c:if test="${titula.titulacion_ID == titu}">
-	 							<tr><td>Titulación: </td><td>${titula.nombre_Tit}</td></tr>
+	 							<tr><th>Titulación: </th><td>${titula.nombre_Tit}</td></tr>
 	 						</c:if>
 	 					</c:forEach>
 					</c:forEach>
@@ -66,35 +66,31 @@
 					<c:forEach var="tecn" items="${perfilBean.listaTec}" >
 						<c:forEach var="tecnol" items="${listaTecnologias}">
 	 						<c:if test="${tecnol.tecnologia_ID == tecn}">
-	 							<tr><td>Tecnología: </td><td>${tecnol.nombre_Tec}</td></tr>
+	 							<tr><th>Tecnología: </th><td>${tecnol.nombre_Tec}</td></tr>
 	 						</c:if>
 	 					</c:forEach>
 					</c:forEach>
+					</table>
+					<table>
 					<jsp:setProperty name="perfilBean" property="listaExp" param="listaExp"/>
+					<tr>
+					<th align="center">Empresa</th><th align="center">Cargo</th><th align="center">Año de Inicio</th><th align="center">Año de Finalización</th>
+					</tr>
 					<c:forEach var="expe" items="${perfilBean.listaExp}">
 					
-					<tr>
-						<td>Empresa</td>
-						<td><c:out value="${expe.empresa}"/></td>
-					</tr>
-					<tr>
-						<td>Cargo</td>
-						<td><c:out value="${expe.cargo}"/></td>
-					</tr>
-					<tr>
-						<td>Año de Inicio</td>
-						<td><c:out value="${expe.a_Inicio}"/></td>
-					</tr>
-					<tr>
-						<td>Año de Finalización</td>
-						<td><c:out value="${expe.a_Fin}"/></td>
-					</tr>
+						<tr>
+							
+							<td><c:out value="${expe.empresa}"/></td>
+							<td><c:out value="${expe.cargo}"/></td>
+							<td><c:out value="${expe.a_Inicio}"/></td>
+							<td><c:out value="${expe.a_Fin}"/></td>
+						</tr>
 					
 					</c:forEach>
 					
 				</table>
 			</fieldset>
-				<html:button property="atras" onclick="parent.location='crearPage.jsp'">Atras</html:button><html:submit>Terminar</html:submit>
+				<html:button property="atras" onclick="parent.location='crearPage.jsp'">Cancelar</html:button><html:submit>Confirmar</html:submit>
 		</html:form>
 		
 		

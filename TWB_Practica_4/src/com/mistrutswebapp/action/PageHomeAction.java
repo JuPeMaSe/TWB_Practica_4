@@ -41,6 +41,7 @@ public class PageHomeAction extends Action
 		opcionSelec="eliminar";
 	}else if(uriSelec.contains("fromhomecrear")){
 		opcionSelec="crear";
+		sesion.removeAttribute("perfilBean");
 	}else if(uriSelec.contains("fromhomeadministrar")){
 		opcionSelec="administrar";
 	}else if(uriSelec.contains("mostrarBD")){
