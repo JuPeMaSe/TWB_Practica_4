@@ -1,15 +1,15 @@
 package com.mistrutswebapp.model;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Collection;
-/**import java.util.Date;**/
-import java.sql.Date;
+
 
 
 public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private String user_ID;
 	private String password;
 	private String nombre;

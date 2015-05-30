@@ -2,10 +2,55 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <div id="logotipo">
-	<a href="homePage.jsp">
+	<a href="homePage.jsp" >
 	  <img src="webhomelogo.gif" alt="Web logo" />
 	</a>
 </div>
+<table align="center">
+	<tr><td align="left">
+		<div id="navigationbar">
+			<span class="topnavigationlink">
+			  <a class="a" href="homePage.jsp">Home</a>
+			 </span>
+			 <span class="topnavigationlink">
+			  <a class="a" href="consultaPage.jsp">P&aacute;gina Consulta</a>
+			 </span>
+			 <span class="topnavigationlink">
+			  <a class="a" href="contactoPage.htm">Contacta con nosotros</a>
+			 </span>
+			 <span class="topnavigationlink">
+			  <a class="a" href="ayudaPage.htm">Ayuda</a>
+			 </span>
+		</div>
+	</td>
+	<td align="right">
+		<p align="right">Usuario:
+		<logic:notEmpty name="loginBean" property="user_ID">			
+			<bean:write name="loginBean" property="user_ID"/>
+			<html:link page="/logout.jsp">  Terminar Sesion</html:link>	
+		</logic:notEmpty>
+		<logic:empty name="loginBean" property="user_ID">
+			Anónimo
+			<html:link page="/loginform.jsp">  Iniciar Sesión</html:link>
+		</logic:empty>
+		</p>
+	</td></tr>
+</table>
+
+
+<!-- 
+<p align="right">Usuario:
+	 <logic:notEmpty name="loginBean" property="user_ID">			
+		<bean:write name="loginBean" property="user_ID"/>
+		<html:link page="/logout.jsp">  Terminar Sesion</html:link>	
+	</logic:notEmpty>
+	<logic:empty name="loginBean" property="user_ID">
+		Anónimo
+		<html:link page="/loginform.jsp">  Iniciar Sesión</html:link>
+	</logic:empty>
+	
+</p>
+	
 <div id="navigationbar">
 	<span class="topnavigationlink">
 	  <a class="a" href="homePage.jsp">Home</a>
@@ -46,3 +91,4 @@
 	</logic:empty>
 	
 </p>
+-->

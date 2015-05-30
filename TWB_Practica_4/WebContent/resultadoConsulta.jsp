@@ -158,6 +158,7 @@
 	 			<td colspan="2">
 	 			<table>
 	 				<td><html:submit property="mostrar" value="Mostrar Perfil: ${perfil.profile_ID}"></html:submit> </td>
+	 				<td>   *   *   *   </td>
 	 				<td><html:submit property="accion" value="Me gusta: ${perfil.profile_ID}"></html:submit></td>
 	 			</table>
 	 			</td>

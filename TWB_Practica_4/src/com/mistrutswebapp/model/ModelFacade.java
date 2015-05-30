@@ -7,7 +7,6 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.mistrutswebapp.beans.ExperienciaBean;
 import com.mistrutswebapp.beans.PerfilBean;
 import com.mistrutswebapp.beans.UsuarioBean;
 import com.mistrutswebapp.dao.PerfilDAO;
@@ -23,7 +22,7 @@ public class ModelFacade {
 	 */
 	public static Perfil crearPerfil(PerfilBean perfilBean){
 		Perfil perfil= new Perfil();
-		Experiencia experiencia = new Experiencia();
+		//Experiencia experiencia = new Experiencia();
 		ArrayList<Experiencia> listaExp = new ArrayList<Experiencia>();
 		try {
 			//pasamos las propiedades del PerfilBean al Perfil

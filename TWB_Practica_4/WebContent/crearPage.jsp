@@ -20,9 +20,6 @@
 <body>
  	<jsp:directive.include file="header.jsp" /> 
  	 <div id="content">
-  	
-<!-- 		<h1>Página crear perfil.Saludos desde Github</h1> -->
-<!-- 		<p>Aquí habrá que mostrar el formulario para rellenarlo.</p> -->
 	<h1>${opcionSelec} perfil</h1>
 			<!-- el action tendrá que ir hacia processCrear -->
 			<html:form action="/processCrear" enctype="multipart/form-data" >

@@ -46,7 +46,7 @@
 		<p><html:errors property="profileIds" /></p>
 		<html:submit>Eliminar Perfil</html:submit>
 	</html:form>
-
+	<p></p>
 	<html:link action="home"><bean:message key="tohome.link" /></html:link>
 	</div>
 	<jsp:directive.include file="footer.jsp" />

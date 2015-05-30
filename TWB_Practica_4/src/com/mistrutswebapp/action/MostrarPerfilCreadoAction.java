@@ -11,11 +11,8 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.mistrutswebapp.beans.ExperienciaBean;
+
 import com.mistrutswebapp.beans.PerfilBean;
-import com.mistrutswebapp.beans.TecnologiaBean;
-import com.mistrutswebapp.beans.TitulacionBean;
-import com.mistrutswebapp.beans.UsuarioBean;
 import com.mistrutswebapp.model.ModelFacade;
 import com.mistrutswebapp.model.Perfil;
 

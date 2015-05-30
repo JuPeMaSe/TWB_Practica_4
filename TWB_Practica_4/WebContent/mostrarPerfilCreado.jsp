@@ -90,13 +90,11 @@
 					
 				</table>
 			</fieldset>
-				<html:button property="atras" onclick="parent.location='crearPage.jsp'">Cancelar</html:button><html:submit>Confirmar</html:submit>
+			<p></p>
+			<p><html:button property="atras" onclick="parent.location='crearPage.jsp'">Cancelar</html:button><html:submit>Confirmar</html:submit></p>
 		</html:form>
-		
-		
-		
-		  
-  		<html:link action="home"><bean:message key="tohome.link" /></html:link>
+		<p></p>
+		<p><html:link action="home"><bean:message key="tohome.link" /></html:link></p>
   		
 	</div>
 	<jsp:directive.include file="footer.jsp" />
