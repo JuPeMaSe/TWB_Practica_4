@@ -15,6 +15,17 @@
 	<link href="threeregion.css" rel="stylesheet" type="text/css" />
 	<jsp:useBean id="loginBean" class= "com.mistrutswebapp.beans.LoginBean" scope="session"></jsp:useBean>
 	<jsp:useBean id= "perfilBean" class="com.mistrutswebapp.beans.PerfilBean" scope="session"/>
+	<script type="text/JavaScript">
+	 	function cambiar(esto){
+                vista=document.getElementById(esto).style.display;
+                if (vista=='none')
+                    vista='block';
+                else
+                    vista='none';
+                                
+                document.getElementById(esto).style.display = vista;
+         }
+	</script>
 	<title>Edita perfil</title>
 </head>
 <body>
@@ -35,7 +46,7 @@
 					<tr>
 						
 						
-						<td><label for="pais">País:</label></td> 
+						<th><label for="pais">País:</label></th> 
 <!--  						<td><html:text property="pais" /></td>    --> 
 
  				<td><html:select property="pais" name="perfilBean">
@@ -48,29 +59,29 @@
 						<!-- <td><html:errors property="pais" /></td>-->
 					</tr>
 					<tr>
-						<td><label for="provincia">Provincia:</label></td>
+						<th><label for="provincia">Provincia:</label></th>
 						<td><html:text property="provincia" name="perfilBean"/></td>
 						<!-- <td><html:errors property="provincia" /></td> -->
 					</tr>
 					<tr>
-						<td><label for="localidad">Localidad:</label></td>
+						<th><label for="localidad">Localidad:</label></th>
 						<td><html:text property="localidad" name="perfilBean"/></td>
 						<!-- <td><html:errors property="localidad" /></td> -->
 					</tr>
 					<tr>
-						<td><label for="direccion">Dirección:</label></td>
+						<th><label for="direccion">Dirección:</label></th>
 						<td><html:text property="direccion" name="perfilBean"/></td>
 						<!-- <td><html:errors property="direccion" /></td> -->
 					</tr>
 							<tr>
 		<c:choose>
 				<c:when test="${perfilBean.pdf=='' || perfilBean.pdf == null}">
-					<td><label for="pdf_file">PDF:</label></td>
+					<th><label for="pdf_file">PDF:</label></th>
 						<td><html:file property="pdf_file" value="perfilBean"/></td>
 						<td><html:submit property="accion" value="Nuevo Archivo PDF"/></td>
 				</c:when>
 				<c:otherwise>
-					<td>PDF:</td>
+					<th>PDF:</th>
 					<td>${perfilBean.pdf}</td>
 					<td><html:submit property="accion" value="Eliminar Archivo PDF"></html:submit></td>
 				</c:otherwise>
@@ -80,12 +91,12 @@
 		<tr>
 			<c:choose>
 				<c:when test="${perfilBean.fotografia=='' || perfilBean.fotografia==null}">
-					<td><label for="fotografia_file">Fotografía:</label></td>
+					<th><label for="fotografia_file">Fotografía:</label></th>
 						<td><html:file property="fotografia_file" value="perfilBean" /></td>
 						<td><html:submit property="accion" value="Nueva Fotografía" /></td>
 				</c:when>
 				<c:otherwise>
-					<td>Fotografía:</td>
+					<th>Fotografía:</th>
 					<td>${perfilBean.fotografia}</td>
 					<td><html:submit property="accion" value="Eliminar Foto"></html:submit></td>
 				</c:otherwise>
@@ -93,13 +104,20 @@
 		</tr> 
 		<tr><td> </td></tr>
 		<tr><td colspan="3">
-			<fieldset style="background-color:#FFFFC7">
+		<!-- <p><a href="#" onclick="cambiar('ayuda'); return false;"><b>Abrir Ayuda</b></a></p> -->
+		
+			
+			<fieldset style="background-color:#FFFFC7"><LEGEND><a href="#" onclick="cambiar('ayuda1'); return false;"><b>Mostrar ayuda</b></a></LEGEND>
+			<div id="ayuda1" style="display:none;">
 				<table>
 				<tr><td>Para añadir una foto o un pdf, primero pulsar Examinar y eligir el archivo a incluir</td></tr>
 				<tr><td>Después pulsar Nuevo Archivo PDF o Nueva Fotografía antes de pulsar Guardar Cambios</td></tr>
 				<tr><td>Para eliminar, pulsar Eliminar Archivo PDF o Eliminar Foto</td></tr>
 				</table>
-			</fieldset>	
+				 <a href="#" onclick="cambiar('ayuda1'); return false;"><b>Cerrar ayuda</b></a>	
+			</div>
+			</fieldset>
+			
 		</td>
 		</tr>
 				</table>
@@ -113,7 +131,7 @@
 					<tr>
 						<c:forEach var="titula" items="${listaTitulaciones}">
 	 							<c:if test="${titula.titulacion_ID == titu}">
-	 								<tr><td>Titulación: </td><td>${titula.nombre_Tit}</td>
+	 								<tr><th>Titulación: </th><td>${titula.nombre_Tit}</td>
 	 								 <td><html:submit property="accion" value="Eliminar Titulac. : ${titula.titulacion_ID}"></html:submit></td> 
 	 								</tr>
 	 							</c:if>
@@ -138,12 +156,15 @@
 					</tr>
 					<tr><td> </td></tr>
 					<tr><td colspan="3">
-						<fieldset style="background-color:#FFFFC7">
+					<fieldset style="background-color:#FFFFC7"><LEGEND><a href="#" onclick="cambiar('ayuda2'); return false;"><b>Mostrar ayuda</b></a></LEGEND>
+					<div id="ayuda2" style="display:none;">
 							<table>
 							<tr><td>Para añadir, seleccionar una titulación en el desplegable y pulsar Nueva Titulación</td></tr>
 							<tr><td>Para eliminar, pulsar Eliminar Titulac.</td></tr>
 							</table>
-						</fieldset>	
+							 <a href="#" onclick="cambiar('ayuda2'); return false;"><b>Cerrar ayuda</b></a>	
+					</div>
+					</fieldset>	
 					</td>
 					</tr>
 					</table>
@@ -157,7 +178,7 @@
 							<c:forEach var="tecn" items="${perfilBean.listaTec}" >
 								<c:forEach var="tecnol" items="${listaTecnologias}">
 			 						<c:if test="${tecnol.tecnologia_ID == tecn}">
-			 							<tr><td>Tecnología: </td><td>${tecnol.nombre_Tec}</td>
+			 							<tr><th>Tecnología: </th><td>${tecnol.nombre_Tec}</td>
 			 							<td><html:submit property="accion" value="Eliminar Tecnolo. : ${tecnol.tecnologia_ID}"></html:submit> </td> 
 			 							</tr>
 			 						</c:if>
@@ -175,11 +196,14 @@
 						</tr>
 						<tr><td> </td></tr>
 						<tr><td colspan="3">
-							<fieldset style="background-color:#FFFFC7">
+							<fieldset style="background-color:#FFFFC7"><LEGEND><a href="#" onclick="cambiar('ayuda3'); return false;"><b>Mostrar ayuda</b></a></LEGEND>
+							<div id="ayuda3" style="display:none;">
 								<table>
 								<tr><td>Para añadir, seleccionar una tecnología en el desplegable y pulsar Nueva Tecnología</td></tr>
 								<tr><td>Para eliminar, pulsar Eliminar Tecnolo.</td></tr>
 								</table>
+								 <a href="#" onclick="cambiar('ayuda3'); return false;"><b>Cerrar ayuda</b></a>	
+							</div>
 							</fieldset>	
 						</td>
 						</tr>
@@ -196,16 +220,16 @@
 			<fieldset>
 			<table>					
 			<tr>			
-				<td>Empresa</td><td>${expe.empresa}</td>
+				<th>Empresa</th><td>${expe.empresa}</td>
 			</tr>
 			<tr>
-				<td>Cargo</td><td>${expe.cargo}</td>
+				<th>Cargo</th><td>${expe.cargo}</td>
 			</tr>
 			<tr>
-				<td>Año de Inicio</td><td>${expe.a_Inicio}</td>
+				<th>Año de Inicio</th><td>${expe.a_Inicio}</td>
 			</tr>
 			<tr>
-				<td>Año de Finalización</td><td>${expe.a_Fin}</td>
+				<th>Año de Finalización</th><td>${expe.a_Fin}</td>
 			</tr>
 			</table>
 			</fieldset>
@@ -217,22 +241,22 @@
 			<fieldset><legend>Nueva Experiencia:</legend>				
  				<table>
 				<tr>
-					<td><label for="empresa">Empresa:</label></td>
+					<th><label for="empresa">Empresa:</label></th>
 					<td><html:text property="empresa" name="perfilBean"  /></td>
 					<td><html:errors property="empresa" /></td>
 				</tr>
 				<tr>
-					<td><label for="cargo">Cargo:</label></td>
+					<th><label for="cargo">Cargo:</label></th>
 					<td><html:text property="cargo" name="perfilBean"/></td>
 					<td><html:errors property="cargo" /></td>
 				</tr>
 				<tr>
-					<td><label for="a_Inicio">Año de inicio:</label></td>
+					<th><label for="a_Inicio">Año de inicio:</label></th>
 					<td><html:text property="a_Inicio" name="perfilBean"/></td>
 					<td><html:errors property="a_Inicio" /></td>
 				</tr>
 				<tr>
-					<td><label for="a_Fin">Año de finalización:</label></td>
+					<th><label for="a_Fin">Año de finalización:</label></th>
 					<td><html:text property="a_Fin" name="perfilBean"/></td>
 					<td><html:errors property="a_Fin" /></td>
 				</tr>	
@@ -243,11 +267,14 @@
 		</tr>
 		<tr><td> </td></tr>
 		<tr><td colspan="3">
-			<fieldset style="background-color:#FFFFC7">
+			<fieldset style="background-color:#FFFFC7"><LEGEND><a href="#" onclick="cambiar('ayuda4'); return false;"><b>Mostrar ayuda</b></a></LEGEND>
+			<div id="ayuda4" style="display:none;">
 			<table>
 				<tr><td>Para añadir una Experiencia, rellenar todos los campos y pulsar Nueva Experiencia</td></tr>
 				<tr><td>Para eliminar, pulsar Eliminar Experie.</td></tr>
 			</table>
+			 <a href="#" onclick="cambiar('ayuda4'); return false;"><b>Cerrar ayuda</b></a>	
+			</div>
 			</fieldset>	
 		</td>
 		</tr>

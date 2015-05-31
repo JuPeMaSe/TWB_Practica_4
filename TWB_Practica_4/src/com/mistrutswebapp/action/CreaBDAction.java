@@ -145,6 +145,38 @@ public class CreaBDAction extends Action {
               st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
                     "VALUES (4,'Struts')");
               
+              
+              //Creamos la listaTitulaciones con scope=session
+              rst1 = st.executeQuery("SELECT * FROM Titulacion");
+              ArrayList<Titulacion> listaTitulaciones = new ArrayList<Titulacion>();
+             // log.info("In CreaBDAction --> ");
+              while (rst1.next()){ 
+              	Titulacion tit = new Titulacion();
+              	int ID = rst1.getInt("titulacion_ID");
+              	String nom = rst1.getString("nombre_Tit"); 
+              	tit.setTitulacion_ID(ID);
+              	tit.setNombre_Tit(nom);
+              	listaTitulaciones.add(tit);
+                //  log.info("Tabla Titulación: "+	ID + " "+nom);  
+              }
+              sesion.setAttribute("listaTitulaciones",listaTitulaciones);
+              
+              //Creamos la listaTecnologias con scope=session
+              rst1 = st.executeQuery("SELECT * FROM Tecnologia");
+              ArrayList<Tecnologia> listaTecnologias = new ArrayList<Tecnologia>();
+             // log.info("In CreaBDAction --> ");
+              while (rst1.next()){ 
+              	Tecnologia tec = new Tecnologia();
+              	int ID = rst1.getInt("tecnologia_ID");
+              	String nom = rst1.getString("nombre_Tec"); 
+              	tec.setTecnologia_ID(ID);
+              	tec.setNombre_Tec(nom);
+              	listaTecnologias.add(tec);
+               //   log.info("Tabla Tecnología: "+	ID + " "+nom);  
+              }
+              sesion.setAttribute("listaTecnologias",listaTecnologias);
+              
+              
               //crear la lista de países
               crearListaPaises();
               

@@ -21,10 +21,11 @@
  	<jsp:directive.include file="header.jsp" />   
  	
  	<div id="content"> 
-   		
-		<h1>Página eliminar usuarios</h1>
-		<p>Lista de usuarios a eliminar</p>
-		<html:form action="/processEliminarUsuarios">
+   		<h1>Página eliminar usuarios</h1>
+   		<html:form action="/processEliminarUsuarios">
+		
+		<fieldset><legend>Lista de usuarios a eliminar</legend>
+		
 			<table align="center">
 				<tr>
 					<th>Eliminar</th>
@@ -43,11 +44,11 @@
 				</c:if>
 				</c:forEach>				
 			</table>
+			</fieldset>
+			<p></p>
 			<html:submit>Eliminar Usuarios</html:submit>
 		</html:form>
-		
-		
-		
+		<p></p>		
 		<html:link action="home"><bean:message key="tohome.link" /></html:link>
 	</div>
 	<jsp:directive.include file="footer.jsp" />

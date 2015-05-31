@@ -19,6 +19,7 @@
 	<div id="content">
 	<h1>Página eliminar perfil</h1>
 	<html:form action="/processEliminarPerfiles" enctype="multipartform-data">
+	<fieldset>
 		<table>
 			<tr>
 				<th>Eliminar</th>
@@ -43,7 +44,8 @@
 				</c:if>
 			</c:forEach>				
 		</table>
-		<p><html:errors property="profileIds" /></p>
+		</fieldset>
+		<p></p>
 		<html:submit>Eliminar Perfil</html:submit>
 	</html:form>
 	<p></p>

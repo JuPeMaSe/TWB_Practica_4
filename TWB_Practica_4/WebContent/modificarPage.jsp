@@ -21,9 +21,7 @@
   	 
   	<div id="content">
    		
-	    <h1>Página modificar perfil</h1>
-	    <p>Aquí habrá que mostrar el perfil del usuario para editarlo</p>
-	    <html:link action="home"><bean:message key="tohome.link" /></html:link>
+	    <h1>Seleccione el perfil a modificar</h1>
   <html:form action="/mostrarPerfilModificar" enctype="multipart/form-data" > 
 	
 	
