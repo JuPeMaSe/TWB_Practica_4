@@ -1,34 +1,27 @@
 package com.mistrutswebapp.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-/**import java.util.Date;**/
-import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.validator.ValidatorForm;
-
-import com.mistrutswebapp.dao.UsuarioDAO;
 import com.mistrutswebapp.model.ModelFacade;
-import com.mistrutswebapp.model.Perfil;
 import com.mistrutswebapp.model.Usuario;
 
 public class UsuarioBean extends ValidatorForm implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	private String user_ID;
 	private String password;
 	private String password2;
 	private String nombre;
 	private String apellidos;
-	
-	//private Date fe_Nac; //hay que revisar tipo
 	private String tfno;
 	private String email;
 	private String userType; //Está limitado a 3 caracteres en la BD
-	//private Collection<Perfil> perfiles;
 	
 	public UsuarioBean(){
 		super();
@@ -103,20 +96,6 @@ public class UsuarioBean extends ValidatorForm implements Serializable{
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-//
-//	/**
-//	 * @return the fe_Nac
-//	 */
-//	public Date getFe_Nac() {
-//		return fe_Nac;
-//	}
-//
-//	/**
-//	 * @param fe_Nac the fe_Nac to set
-//	 */
-//	public void setFe_Nac(Date fe_Nac) {
-//		this.fe_Nac = fe_Nac;
-//	}
 
 	/**
 	 * @return the tfno
@@ -160,20 +139,10 @@ public class UsuarioBean extends ValidatorForm implements Serializable{
 		this.userType = userType;
 	}
 
-//	/**
-//	 * @return the perfiles
-//	 */
-//	public Collection<Perfil> getPerfiles() {
-//		return perfiles;
-//	}
-//
-//	/**
-//	 * @param perfiles the perfiles to set
-//	 */
-//	public void setPerfiles(Collection<Perfil> perfiles) {
-//		this.perfiles = perfiles;
-//	}
 	
+	/* (non-Javadoc)
+	 * @see org.apache.struts.validator.ValidatorForm#validate(org.apache.struts.action.ActionMapping, javax.servlet.http.HttpServletRequest)
+	 */
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request){
 		ActionErrors errors = new ActionErrors();
 		if(user_ID == null || user_ID.equals("")){
@@ -194,15 +163,27 @@ public class UsuarioBean extends ValidatorForm implements Serializable{
 		if(apellidos == null || apellidos.equals("")){
 			errors.add("apellidos", new ActionMessage("error.apellidos"));
 		}
-//		if(fe_Nac == null || fe_Nac.equals("")){
-//			errors.add("fe_Nac", new ActionMessage("error.fe_Nac"));
-//		}
-		if(tfno == null || tfno.equals("")){
-			errors.add("tfno", new ActionMessage("error.tfno"));
+		if(tfno != null && !tfno.equals("")){
+			tfno = tfno.trim();
+			boolean noValido=false;
+			for(int i=0;i<tfno.length();i++){
+				try{
+					Integer.parseInt(tfno.substring(i,(i+1)));
+				}catch (Exception e){
+					noValido=true;
+				}
+			}
+			if(noValido){
+				errors.add("tfno", new ActionMessage("error.tfno"));	
+			}			
 		}
 		if(email == null || email.equals("")){
 			errors.add("email", new ActionMessage("error.email"));
-		}	
+		}else if (email!=null){
+			if(!email.contains("@")){
+				errors.add("email", new ActionMessage("error.email.noValido"));
+			}
+		}
 		if(isValido(user_ID)==false){
 			errors.add("user_ID", new ActionMessage("error.user_ID.noValido"));
 		}

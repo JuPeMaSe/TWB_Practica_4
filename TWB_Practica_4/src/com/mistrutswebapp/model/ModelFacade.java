@@ -35,27 +35,22 @@ public class ModelFacade {
 		//completamos las propiedades que faltan del perfil
 		perfil.setCont_MeGusta(0);
 		perfil.setUser_ID(perfilBean.getUser_ID());
+		//añade una referencia única al perfil para poder ser identificado
 		perfil.setReference(ReferenceGenerator.getReference(perfilBean.getUser_ID()));
 		
 		//escribimos el perfil en la base de datos
 		PerfilDAO perfilDAO = new PerfilDAO();
 		perfilDAO.crearPerfil(perfil);
-//		System.out.println("en ModelFacade: Perfil profile_ID --> "+ perfil.getProfile_ID());
-//		System.out.println("en ModelFacade: Perfil reference --> "+ perfil.getReference());
-		int intProfile_ID = perfilDAO.getProfile_ID(perfil);
-//		System.out.println("en ModelFacade: Perfil profile_ID --> "+ intProfile_ID);		
-		perfilDAO.addTitulacion(intProfile_ID, perfil);
-		perfilDAO.addTecnologia(intProfile_ID, perfil);
-//		if(experiencia.getEmpresa()!=null){
-//			perfilDAO.addExperiencia(intProfile_ID, experiencia);
-//		}
 		
+		//Añadimos las titulacione, tecnologías y experiencias
+		int intProfile_ID = perfilDAO.getProfile_ID(perfil);		
+		perfilDAO.addTitulacion(intProfile_ID, perfil);
+		perfilDAO.addTecnologia(intProfile_ID, perfil);		
 		listaExp = perfilBean.getListaExp();
 		for(int i=0;i<listaExp.size();i++){
 			perfilDAO.addExperiencia(intProfile_ID, listaExp.get(i));
 		}
-		
-		
+			
 		return perfil;
 	}
 	
@@ -141,6 +136,8 @@ public class ModelFacade {
 		PerfilDAO pdao= new PerfilDAO();
 		pdao.eliminarPerfilesUsuario(user_ID);
 	}
+	
+	
 	
 	public static void eliminarPerfil(int profile_ID){		 
 		 PerfilDAO pdao = new PerfilDAO();

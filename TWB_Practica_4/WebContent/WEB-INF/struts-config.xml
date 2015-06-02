@@ -10,11 +10,11 @@
  		<form-bean name="perfilBean" type="com.mistrutswebapp.beans.PerfilBean" />
  		<form-bean name="consultaBean" type="com.mistrutswebapp.beans.ConsultaBean" />
  		<form-bean name="resultadoConsultaBean" type="com.mistrutswebapp.beans.ResultadoConsultaBean" />
- 		<form-bean name="mostrarPerfilCreadoBean" type="com.mistrutswebapp.beans.MostrarPerfilCreadoBean" />
  		<form-bean name="administrarBean" type="com.mistrutswebapp.beans.AdministrarBean" />
  		<form-bean name="eliminarUsuariosBean" type="com.mistrutswebapp.beans.EliminarUsuariosBean" /> 
  		<form-bean name="eliminarPerfilesBean" type="com.mistrutswebapp.beans.EliminarPerfilesBean" />
  		<form-bean name="modificarBean" type="com.mistrutswebapp.beans.ModificarBean" />
+ 		<form-bean name="mostrarPerfilCreadoBean" type="com.mistrutswebapp.beans.MostrarPerfilCreadoBean" />
  		<!-- <form-bean name="mostrarPerfilModificarBean" type="com.mistrutswebapp.beans.MostrarPerfilModificarBean" /> --> 					
  	</form-beans>
  	
@@ -116,9 +116,9 @@
  			name="mostrarPerfilCreadoBean"
  			scope="request"
  			validate="true"
- 			input="/mostrarPerfilCreadoPage.jsp">
+ 			input="/mostrarPerfilCreado.jsp"> 
  			<forward name="succes" path="/homePage.jsp" />
- 		</action>				
+ 		</action> 			
 		<action path="/creaBD"
 			type="com.mistrutswebapp.action.CreaBDAction"
 			input= "/inicioPage.jsp">

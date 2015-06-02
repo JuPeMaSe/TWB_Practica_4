@@ -38,15 +38,15 @@
 						<table border="1"> <!-- Tabla 2 -->
 	<!-- 						<tr><th>profile_ID</th><th>dirección</th><th>localidad</th><th>provincia</th><th>pais</th>
 							<th>Me gusta</th><th>pdf(url)</th><th>fotografia</th><th>user_ID</th></tr>	-->
-		 		 			<tr><th>profile_ID</th><td>${perfil.profile_ID}</td></tr>
-		 					<tr><th>dirección</th><td>${perfil.direccion}</td></tr>
-		 					<tr><th>localidad</th><td>${perfil.localidad}</td></tr>
-		 					<tr><th>provincia</th><td>${perfil.provincia}</td></tr>
-		 					<tr><th>pais</th><td>${perfil.pais}</td></tr>
-		 					<tr><th>cont_MeGusta</th><td>${perfil.cont_MeGusta}</td></tr>
-		 					<tr><th>pdf (url)</th><td><a href="${perfil.pdf}" target="_blank">${perfil.pdf}</a></td></tr>
-		 					<tr><th>fotografia</th><td><a href="${perfil.fotografia}" target="_blank">${perfil.fotografia}</a></td></tr>
-		 					<tr><th>user_ID</th><td>${perfil.user_ID}</td></tr> 	 					
+	<!--  		 			<tr><th>profile_ID</th><td>${perfil.profile_ID}</td></tr> -->
+		 					<tr><th>Dirección</th><td>${perfil.direccion}</td></tr>
+		 					<tr><th>Localidad</th><td>${perfil.localidad}</td></tr>
+		 					<tr><th>Provincia</th><td>${perfil.provincia}</td></tr>
+		 					<tr><th>Pais</th><td>${perfil.pais}</td></tr>
+		 					<tr><th>Me Gusta</th><td>${perfil.cont_MeGusta}</td></tr>
+		 					<tr><th>PDF</th><td><a href="${perfil.pdf}" target="_blank">${perfil.pdf}</a></td></tr>
+		 					<tr><th>Fotografia</th><td><a href="${perfil.fotografia}" target="_blank">${perfil.fotografia}</a></td></tr>
+		 					<!-- <tr><th>user_ID</th><td>${perfil.user_ID}</td></tr> --> 	 					
 		 				</table> <!-- tabla 2 -->
 	 				</fieldset>
 	 			</td>
@@ -54,13 +54,13 @@
 	 				<fieldset><legend>Usuario</legend>
 	 					<table border="1"> <!-- tabla 2 -->
 	 					<c:forEach var="usuario" items="${listaUsuarios}">
-	 						<tr><th>user_ID</th><td>${usuario.user_ID}</td></tr>
-		 					<tr><th>password</th><td>${usuario.password}</td></tr>
-		 					<tr><th>nombre</th><td>${usuario.nombre}</td></tr>
-		 					<tr><th>apellidos</th><td>${usuario.apellidos}</td></tr>
-		 					<tr><th>tfno</th><td>${usuario.tfno}</td></tr>
-		 					<tr><th>email</th><td>${usuario.email}</td></tr>
-		 					<tr><th>userType</th><td>${usuario.userType}</td></tr>
+	 						<!-- <tr><th>user_ID</th><td>${usuario.user_ID}</td></tr>
+		 					<tr><th>password</th><td>${usuario.password}</td></tr> -->
+		 					<tr><th>Nombre</th><td>${usuario.nombre}</td></tr>
+		 					<tr><th>Apellidos</th><td>${usuario.apellidos}</td></tr>
+		 					<tr><th>Teléfono</th><td>${usuario.tfno}</td></tr>
+		 					<tr><th>E-mail</th><td>${usuario.email}</td></tr>
+		 					<!-- <tr><th>userType</th><td>${usuario.userType}</td></tr> -->
 	 					</c:forEach>
 	 					</table> <!-- tabla 2 -->
 	 				</fieldset>
@@ -86,12 +86,12 @@
 	 				<fieldset><legend>Experiencia: </legend>
 	 					<c:forEach var="expe" items="${perfil.listaExp}">
 	 						<table border="1"> <!--  tabla 2 -->
-		 						<tr><th>exp_ID</th><td>${expe.exp_ID}</td></tr>
-		 						<tr><th>profile_ID</th><td>${expe.profile_ID}</td></tr>
-			 					<tr><th>empresa</th><td>${expe.empresa}</td></tr>
-			 					<tr><th>cargo</th><td>${expe.cargo}</td></tr>
-			 					<tr><th>a_Inicio</th><td>${expe.a_Inicio}</td></tr>
-			 					<tr><th>a_Fin</th><td>${expe.a_Fin}</td></tr>		 						
+		 						<!-- <tr><th>exp_ID</th><td>${expe.exp_ID}</td></tr>  
+		 						<tr><th>profile_ID</th><td>${expe.profile_ID}</td></tr>  -->
+			 					<tr><th>Empresa</th><td>${expe.empresa}</td></tr>
+			 					<tr><th>Cargo</th><td>${expe.cargo}</td></tr>
+			 					<tr><th>Fecha Inicio</th><td>${expe.a_Inicio}</td></tr>
+			 					<tr><th>Fecha Fin</th><td>${expe.a_Fin}</td></tr>		 						
 		 					</table> <!-- tabla 2 -->
 		 				</c:forEach>
 	 				</fieldset> 						

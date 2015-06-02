@@ -81,26 +81,6 @@ public class Usuario implements Serializable {
 		this.apellidos = apellidos;
 	}
 
-//	/**
-//	 * @return the fe_Nac
-//	 */
-//	public Date getFe_Nac() {
-//		return fe_Nac;
-//	}
-//
-//	/**
-//	 * @param fe_Nac the fe_Nac to set
-//	 */
-//	public void setFe_Nac(java.sql.Date fe_Nac) {
-//		this.fe_Nac = fe_Nac;
-//	}
-	
-//	private String getFormattedDate()
-//	 {
-//	  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//	  return dateFormat.format(getFe_Nac());
-//	 }
-
 	/**
 	 * @return the tfno
 	 */

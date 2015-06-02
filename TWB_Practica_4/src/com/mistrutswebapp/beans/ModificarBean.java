@@ -5,9 +5,7 @@ import java.io.Serializable;
 import org.apache.struts.validator.ValidatorForm;
 
 public class ModificarBean extends ValidatorForm implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String accion;
 	public ModificarBean(){
@@ -25,10 +23,4 @@ public class ModificarBean extends ValidatorForm implements Serializable {
 	public void setAccion(String accion) {
 		this.accion = accion;
 	}
-
-
-	
-	
-	
-
 }

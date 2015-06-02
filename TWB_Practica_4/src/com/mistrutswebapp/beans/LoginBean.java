@@ -15,44 +15,35 @@ public class LoginBean extends ValidatorForm implements Serializable{
 	private String user_ID;
 	 private String password;
 	
-	 public LoginBean()
-	 {
-	  super();
+	 public LoginBean(){
+		 super();
 	 }
 	
-	 public void setUser_ID(String user_ID)
-	 {
-	  this.user_ID = user_ID;
+	 public void setUser_ID(String user_ID){
+		 this.user_ID = user_ID;
 	 }
 	
-	 public void setPassword(String password)
-	 {
-	  this.password = password;
+	 public void setPassword(String password){
+		 this.password = password;
 	 }
 	
-	 public String getUser_ID()
-	 {
-	  return user_ID;
+	 public String getUser_ID(){
+		 return user_ID;
 	 }
 	
-	 public String getPassword()
-	 {
-	  return password;
+	 public String getPassword(){
+		 return password;
 	 }
 	
-	 public ActionErrors validate(ActionMapping mapping, HttpServletRequest request)
-	 {
-	  ActionErrors errors = new ActionErrors();
-	  if(user_ID == null || user_ID.length()<=0)
-	  {
-		errors.add("user_ID", new ActionMessage("error.user_ID"));
-	  }
-	 
-	  if(password == null || password.length()<=0)
-	  {
-		errors.add("password", new ActionMessage("error.password"));
-	  }
-	  mapping.getInputForward();
-	  return errors;
+	 public ActionErrors validate(ActionMapping mapping, HttpServletRequest request){
+		  ActionErrors errors = new ActionErrors();
+		  if(user_ID == null || user_ID.length()<=0)		  {
+			  errors.add("user_ID", new ActionMessage("error.user_ID"));
+		  }		 
+		  if(password == null || password.length()<=0){
+			  errors.add("password", new ActionMessage("error.password"));
+		  }
+		  mapping.getInputForward();
+		  return errors;
 	 }
 }

@@ -17,13 +17,15 @@
 </head>
 <body>
   	<jsp:directive.include file="header.jsp" />
+  	<div id="content">
 	<h1 align="center">Introduzca su nombre de usuario y contraseña</h1>
-	<h2 align= "center">El acceso a esta página solo está permitido para usuarios registrados</h2>
+	<!-- <h2 align= "center">El acceso a esta página solo está permitido para usuarios registrados</h2> -->
+	
 	<h3>Introduzca sus credenciales y pulse Enviar</h3>
    	<html:form action="/processlogin"> 
     <table align= "center">
 		<tr>
-			<td>Nombre Usuario</td>
+			<td>Identidad de Usuario</td>
 			<td><html:text property="user_ID"/></td>
 			<td><html:errors property="user_ID" /></td>
 	    </tr>
@@ -39,6 +41,9 @@
 	    </tr>
   	</table>
  	</html:form>
+ 	<p></p>
+	<html:link action="home"><bean:message key="tohome.link" /></html:link>
+	</div>
   	<jsp:directive.include file="footer.jsp" />
 </body>
 </html:html>

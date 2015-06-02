@@ -38,10 +38,9 @@ public class EliminarPerfilesBean extends ValidatorForm implements Serializable{
 
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request){
 		ActionErrors errors = new ActionErrors();
-	if(profileIds==null){
-		errors.add("profileIds", new ActionMessage("error.profileIds"));
-	}
-		
+		if(profileIds==null){
+			errors.add("profileIds", new ActionMessage("error.profileIds"));
+		}		
 		return errors;
 	}
 

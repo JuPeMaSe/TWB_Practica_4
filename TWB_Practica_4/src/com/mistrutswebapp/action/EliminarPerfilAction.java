@@ -55,7 +55,7 @@ public class EliminarPerfilAction extends Action {
 			}			
 		}
 	
-		System.out.println("In EliminarrPerfilAction --> finalizado");
+		//System.out.println("In EliminarrPerfilAction --> finalizado");
 		if(!loginBean.getUser_ID().equals("admin")){
 			ArrayList<Perfil> listaPerfiles = new ArrayList<Perfil>();
 			listaPerfiles = (ArrayList<Perfil>) ModelFacade.getPerfiles("WHERE user_ID = '"+ loginBean.getUser_ID()+ "' ");

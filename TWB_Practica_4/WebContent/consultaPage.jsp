@@ -85,7 +85,8 @@
 				
 			</table>
 			</fieldset>
-			<p></p>					
+			<p></p>		
+			<p><html:errors property="consulta"/></p>						
 			<html:submit>Consultar</html:submit>
 			<p></p>
 		</html:form>

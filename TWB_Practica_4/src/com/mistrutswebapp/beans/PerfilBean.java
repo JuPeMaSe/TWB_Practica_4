@@ -531,14 +531,13 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 		if(!empresa.isEmpty()){
 			if ((a_Inicio==0)|| (a_Inicio<1900) ||(a_Inicio>2016)){
 				errors.add("a_Inicio", new ActionMessage("error.a_Inicio"));				
-			}
-			if((a_Fin ==0)|| (a_Fin<1900) ||(a_Fin>2016)){
+			}else if((a_Fin ==0)|| (a_Fin<1900) ||(a_Fin>2016)){
 				errors.add("a_Fin", new ActionMessage("error.a_Fin"));
+			}else if((a_Fin-a_Inicio) < 0){
+				errors.add("a_Fin", new ActionMessage("error.a_Fin.menor"));
 			}
 		}
-		if((a_Fin-a_Inicio) < 0){
-			errors.add("a_Fin", new ActionMessage("error.a_Fin"));
-		}
+		
 		return errors;
 	}
 

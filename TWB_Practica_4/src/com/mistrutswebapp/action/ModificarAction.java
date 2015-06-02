@@ -35,7 +35,7 @@ public class ModificarAction extends Action {
 			
 		}else{
 			 intFinalProfile_ID= Integer.parseInt(strClave.substring(18));
-				System.out.println("perfil ID = "+intFinalProfile_ID);
+//				System.out.println("perfil ID = "+intFinalProfile_ID);
 			 ArrayList<Perfil> listaPerfiles = new ArrayList<Perfil>();
 			 listaPerfiles = (ArrayList<Perfil>) ModelFacade.getPerfiles(" WHERE profile_ID = " + intFinalProfile_ID);
 			 sesion.setAttribute("listaPerfiles",listaPerfiles);
@@ -45,15 +45,15 @@ public class ModificarAction extends Action {
 				PropertyUtils.copyProperties(perfilBean,  listaPerfiles.get(0));
 				sesion.setAttribute("perfilBean", perfilBean);
 			
-				 System.out.print("ModificarAction.PerfilBean --> "+ perfilBean.getProfile_ID());
-				 System.out.print(" \\ "+ perfilBean.getPais());
-				 System.out.print(" \\ "+ perfilBean.getProvincia());
-				 System.out.print(" \\ "+ perfilBean.getLocalidad());
-				 System.out.print(" \\ "+ perfilBean.getDireccion());
-				 System.out.print(" \\ "+ perfilBean.getPdf());
-				 System.out.print(" \\ "+ perfilBean.getFotografia());
-				// System.out.print(" \\ "+ perfilBean.getListaTit().toString());
-				 System.out.println(" \\ "+ perfilBean.getUser_ID());
+//				 System.out.print("ModificarAction.PerfilBean --> "+ perfilBean.getProfile_ID());
+//				 System.out.print(" \\ "+ perfilBean.getPais());
+//				 System.out.print(" \\ "+ perfilBean.getProvincia());
+//				 System.out.print(" \\ "+ perfilBean.getLocalidad());
+//				 System.out.print(" \\ "+ perfilBean.getDireccion());
+//				 System.out.print(" \\ "+ perfilBean.getPdf());
+//				 System.out.print(" \\ "+ perfilBean.getFotografia());
+//				// System.out.print(" \\ "+ perfilBean.getListaTit().toString());
+//				 System.out.println(" \\ "+ perfilBean.getUser_ID());
 				
 				
 			} catch (IllegalAccessException | InvocationTargetException

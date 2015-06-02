@@ -35,12 +35,7 @@ public class PerfilDAO {
 	
 	private static final String DATASOURCE_NAME = "java:comp/env/jdbc/ConexionHSQLDS";
 	private static final String INSERT_STATEMENT_PERFIL = "INSERT INTO Perfil " +
-			//"(profile_ID, pdf, fotografia, direccion, localidad, provincia, pais, cont_MeGusta, user_ID)" +
-			//" VALUES (?,?,?,?,?,?,?,?,?)"; 
-//			"(pdf, fotografia, direccion, localidad, provincia, pais, cont_MeGusta, user_ID)" +
-//			" VALUES (?,?,?,?,?,?,?,?)"; 
 			"(direccion, localidad, provincia, pais, user_ID, pdf,fotografia,cont_MeGusta,reference)"+ 
-			//" VALUES (?,?,?,?,?,CAST(? AS BLOB)";
 			" VALUES (?,?,?,?,?,?,?,?,?)";
 	
 	private static final String INSERT_STATEMENT_PERFIL_TIT = "INSERT INTO Perfil_Tit " +
@@ -52,9 +47,6 @@ public class PerfilDAO {
 	private static final String INSERT_STATEMENT_EXPERIENCIA = "INSERT INTO Experiencia " +
 			"(empresa, cargo, a_Inicio, a_Fin, profile_ID) VALUES (?,?,?,?,?)";
 	
-	
-	//private static final String DELETE_STATEMENT_PERFIL="DELETE * FROM PERFIL where profile_ID='usuario''";
-
 
 	private void getConnection(){
 		if(connection == null){
@@ -307,8 +299,7 @@ public class PerfilDAO {
 			   stExp = connection.createStatement();//Idem
 			   statement = connection.createStatement();
 			  // results = statement.executeQuery("SELECT * FROM Perfil " + strPerfil);
-			   //System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil " + strPerfil);
-			  
+			   //System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil " + strPerfil);			  
 			   if(strPerfil.equals("") && strTitu.equals("") && strTecn.equals("") && strExpe.equals("")){
 				   return null;
 			   }
@@ -317,8 +308,7 @@ public class PerfilDAO {
 //					 System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil_Tit " +strTitu);
 					 while (resTit.next()){
 						 listaPerfiles.add(resTit.getInt("profile_ID"));
-					 }
-				   
+					 }				   
 			   }
 			   if(!strTecn.isEmpty()){
 				   if(listaPerfiles.size()==0 && !strTitu.isEmpty()){
@@ -386,8 +376,7 @@ public class PerfilDAO {
 								 listaPerfiles.remove(j);
 							 }
 						 }
-					 }
-				   
+					 }				   
 			   }
 			   
 			   
@@ -465,8 +454,7 @@ public class PerfilDAO {
 								 exp.setExp_ID(resExp.getInt("exp_ID"));
 								 exp.setProfile_ID(resExp.getInt("profile_ID"));
 								 listaExp.add(exp);
-							 }					 
-		
+							 }
 						   	 perfil=new Perfil();
 						   	 perfil.setProfile_ID(profile_ID);
 						   	 perfil.setPdf(pdf);
@@ -500,7 +488,7 @@ public class PerfilDAO {
 			 getConnection();
 			 statement=connection.createStatement();
 			 results=statement.executeQuery("SELECT * FROM Perfil WHERE user_ID = '"+usuario_ID+"'");
-			 System.out.println("Query eliminarPerfiles --> SELECT * FROM Perfil WHERE user_ID = '"+usuario_ID+"'");
+//			 System.out.println("Query eliminarPerfiles --> SELECT * FROM Perfil WHERE user_ID = '"+usuario_ID+"'");
 			 statement.executeUpdate("DELETE FROM Perfil WHERE user_ID='" + usuario_ID + "'");
 //			 while(results.next()){
 //				 int intPerfil = results.getInt("profile_ID");
@@ -521,6 +509,7 @@ public class PerfilDAO {
 	 
 	 
 	 public void eliminarPerfil(int profile_ID){
+		 
 		 try{
 			getConnection();
 		    prepStatement = connection.prepareStatement("DELETE FROM Perfil WHERE profile_ID = "+ profile_ID);
@@ -599,7 +588,7 @@ public class PerfilDAO {
 			strEdit+=" fotografia = '"+perfil.getFotografia()+"',";
 			strEdit+=" pdf = '"+perfil.getPdf()+"'";
 			strEdit+= " WHERE profile_ID ="+perfil.getProfile_ID();
-			System.out.println("Query para modificarPerfil--> "+strEdit);
+//			System.out.println("Query para modificarPerfil--> "+strEdit);
 			statement.executeUpdate(strEdit);
 			statement.executeUpdate("DELETE FROM Perfil_Tit WHERE profile_ID="+perfil.getProfile_ID());
 			if(perfil.getListaTit().isEmpty()){
@@ -642,8 +631,6 @@ public class PerfilDAO {
 //						strQuery += " WHERE exp_ID = "+listaExpe.get(i).getExp_ID();
 //						System.out.println("En modificarPerfil.Expe StrQuery -->  "+ strQuery);
 //						 statement.executeUpdate(strQuery);
-//						
-						
 						String strQuery ="INSERT INTO Experiencia (empresa, cargo, a_Inicio, a_Fin, profile_ID) "+
 				           		 "VALUES('"+listaExpe.get(i).getEmpresa()+"','"+listaExpe.get(i).getCargo()+"',"+
 								listaExpe.get(i).getA_Inicio()+","+

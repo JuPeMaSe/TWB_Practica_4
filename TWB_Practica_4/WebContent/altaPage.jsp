@@ -20,7 +20,7 @@
 <body>
 	<jsp:directive.include file="header.jsp" />
 	 	 
-	<!-- <div id="content"> -->
+	 <div id="content"> 
 	  	
 	 	<h1>Alta de Usuario</h1>
 		<p>Rellene los datos del formulario para darse de alta</p>
@@ -29,28 +29,28 @@
 	<fieldset>	
 	<table>
 				<tr>
-					<td>User_ID:</td>
+					<th><label for="user_ID">Identidad de Usuario</label></th>
 					<td><html:text property="user_ID"/></td>
 					 <td><html:errors property="user_ID" /></td>
 				</tr>
 				<tr>
-					<td>Contraseña:</td>
+					<th><label for="password">Contraseña:</label></th>
 					<td><html:password property="password"/></td>
 					<td><html:errors property="password" /></td>
 				</tr>
  				<!-- Repetimos la contraseña para validar -->
 				<tr>
-					<td>Confirme la contraseña:</td>
+					<th><label for="paswword2">Confirme la contraseña:</label></th>
 					<td><html:password property="password2"/></td>
 					<td><html:errors property="password2" /></td>
 				</tr>
 				 <tr>
-					<td>Nombre</td>
+					<th><label for="nombre">Nombre</label></th>
 					<td><html:text property="nombre"/></td>
 					<td><html:errors property="nombre"/></td>
 				</tr>
 				  <tr>
-					<td>Apellidos</td>
+					<th><label for="apellidos">Apellidos</label></th>
 					<td><html:text property="apellidos"/></td>
 					<td><html:errors property="apellidos"/></td>
 				</tr>
@@ -63,33 +63,28 @@
 					<td><html:errors property="fe_Nac"/></td>
 				</tr>	-->
 				<tr>
-					<td>Teléfono</td>
+					<th><label for="tfno">Teléfono</label></th>
 					<td><html:text property="tfno"/></td>
 					<td><html:errors property="tfno" /></td>
 				</tr>
 				<tr>
-					<td>Correo Electrónico:</td>
+					<th><label for="email">Correo Electrónico:</label></th>
 					<td><html:text property="email"/></td>
 					<td><html:errors property="email" /></td>
 				</tr>
-				 <tr>
-					<td>Tipo de usuario</td>
-					<td><html:text property="userType" value="usu"/></td>
-					<td><html:errors property="userType"/></td>
-				</tr>
+				<html:hidden property="userType" value="usu"/>
 				<tr>
-					<td></td><td><html:submit>Seguir</html:submit></td>
+					<td></td><td><html:submit>Continuar</html:submit></td>
 				</tr>
 			</table>
 			</fieldset>
-
 
  	</html:form>
 	
 		<p></p>
 		
 		 <html:link action="home"><bean:message key="tohome.link" /></html:link>
-	<!-- </div> -->
+	 </div> 
 	<jsp:directive.include file="footer.jsp" />
 </body>
 </html:html>

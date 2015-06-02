@@ -17,24 +17,23 @@
 	<title>Modificar Perfil</title>
 </head>
 <body>
-	<jsp:directive.include file="header.jsp" />   
-  	 
-  	<div id="content">
-   		
+	<jsp:directive.include file="header.jsp" />
+  	<div id="content">   		
 	    <h1>Seleccione el perfil a modificar</h1>
-  <html:form action="/mostrarPerfilModificar" enctype="multipart/form-data" > 
-	
-	
+  		<html:form action="/mostrarPerfilModificar" enctype="multipart/form-data" > 
 			<c:forEach var="perfil" items="${listaPerfiles}">
 			<fieldset><legend>Perfil del usuario: ${perfil.user_ID } </legend>
-			<!--<html:button property="mostrar" onclick="parent.location='mostrarPerfilSeleccionado.jsp'">Mostrar Perfil</html:button>-->
 			<table>
 			<tr><td>
 				<fieldset><legend>Perfil</legend>	
 					<table border="1">
-						<tr><th>profile_ID</th><th>dirección</th><th>localidad</th><th>provincia</th><th>pais</th>
-						<th>Me gusta</th><th>pdf(url)</th><th>fotografia</th><th>user_ID</th></tr>
-	 					<tr><td>${perfil.profile_ID}</td>
+						<tr><!-- <th>profile_ID</th> -->
+						<th>Dirección</th><th>Localidad</th><th>Provincia</th><th>Pais</th>
+						<th>Me gusta</th><th>PDF</th><th>Fotografia</th>
+						<!-- <th>user_ID</th>-->
+						</tr>
+	 					<tr>
+	 					<!-- <td>${perfil.profile_ID}</td> -->
 	 					<td>${perfil.direccion}</td>
 	 					<td>${perfil.localidad}</td>
 	 					<td>${perfil.provincia}</td>
@@ -42,26 +41,24 @@
 	 					<td>${perfil.cont_MeGusta}</td>
 	 					<td>${perfil.pdf}</td>
 	 					<td>${perfil.fotografia}</td>
-	 					<td>${perfil.user_ID}</td></tr>
-	 					
+	 					<!-- <td>${perfil.user_ID}</td> -->
+	 					</tr>	 					
 	 				</table>
  				</fieldset>
  				</td>
- 				<td>
- 				
+ 				<td> 				
  				<fieldset><legend>Titulaciones: </legend>
  					<table>
  						<c:forEach var="titu" items="${perfil.listaTit}">
  							<!-- <tr><td>titulacion_ID</td><td>${titu}</td></tr>  -->
  							<c:forEach var="titula" items="${listaTitulaciones}">
 	 							<c:if test="${titula.titulacion_ID == titu}">
-	 								<tr><td>Titulación: </td><td>${titula.nombre_Tit}</td></tr>
+	 								<tr><th>Titulación: </th><td>${titula.nombre_Tit}</td></tr>
 	 							</c:if>
 	 						</c:forEach>
  						</c:forEach>
  					</table>
- 				</fieldset> 				
- 				
+ 				</fieldset> 
  				</td></tr>
  			<!-- </table> -->
  			<!-- <table> -->
@@ -69,15 +66,15 @@
  				<fieldset><legend>Experiencia: </legend>
  					<c:forEach var="expe" items="${perfil.listaExp}">
  						<table border="1">
- 						<tr><th>exp_ID</th><th>profile_ID</th><th>empresa</th><th>cargo</th><th>a_Inicio</th><th>a_Fin</th></tr>
- 						<tr><td>${expe.exp_ID}</td>
- 							<td>${expe.profile_ID}</td>
+ 						<tr><!-- <th>exp_ID</th><th>profile_ID</th> -->
+ 						<th>Empresa</th><th>Cargo</th><th>Fecha Inicio</th><th>Fecha Fin</th></tr>
+ 						<tr><!-- <td>${expe.exp_ID}</td>
+ 							<td>${expe.profile_ID}</td> -->
 	 						<td>${expe.empresa}</td>
 	 						<td>${expe.cargo}</td>
 	 						<td>${expe.a_Inicio}</td>
 	 						<td>${expe.a_Fin}</td>
-	 					</tr>
-	 		
+	 					</tr>	 		
 	 					</table>
 	 				</c:forEach>
  				</fieldset> 						
@@ -89,7 +86,7 @@
 	 						<!-- <tr><td>tecnologia_ID</td><td>${tecn}</td></tr>  -->
 	 						<c:forEach var="tecnol" items="${listaTecnologias}">
 	 							<c:if test="${tecnol.tecnologia_ID == tecn}">
-	 								<tr><td>Tecnología: </td><td>${tecnol.nombre_Tec}</td></tr>
+	 								<tr><th>Tecnología:</th><td>${tecnol.nombre_Tec}</td></tr>
 	 							</c:if>
 	 						</c:forEach>
 	 					</c:forEach>
@@ -106,28 +103,16 @@
 	 			</td>
 	 			</tr>
  			</table> 
- 			
- 				<!--  <p align="center"><html:button property="bttnMostrar" onclick="parent.location='mostrarPerfilSeleccionado.jsp'">Mostrar Perfil</html:button></p>-->
- 				<!--<html:submit property="mostrar" value="Mostrar Perfil: ${perfil.profile_ID }" onclick="bttnMostrar(${perfil.profile_ID })"></html:submit>-->
- 				<!-- 	<html:submit property="accion" value="${perfil.profile_ID }"></html:submit> -->
- 				<!-- <html:submit property="accion" value="borrar"></html:submit>	 -->	
- 						
- 			</fieldset>
- 					
-							 
+ 			</fieldset>	 
 		</c:forEach> 
-
-				<p></p>
-				<html:submit property = "accion" value ="Salir"></html:submit>
-				<p></p>
-	 </html:form> 
-
 		<p></p>
-
-		<html:link action="home"><bean:message key="tohome.link" /></html:link>
+		<html:submit property = "accion" value ="Salir"></html:submit>
+		<p></p>
+	 </html:form> 
+	<p></p>
+	<html:link action="home"><bean:message key="tohome.link" /></html:link>
 	</div>
 	<jsp:directive.include file="footer.jsp" />
-
 </body>
 </html:html>
 </jsp:root>
